@@ -11,7 +11,18 @@ from src.auth.endpoints import Endpoints
 load_dotenv()
 
 # =============================================================
+
+"""
+Redo TokenManager to account for Spotify Authorization Flow - https://developer.spotify.com/documentation/web-api/tutorials/code-flow 
+
+
+
+
+
+"""
+
 class TokenManager:
+
     """
     Token Manager Class
 
@@ -60,6 +71,7 @@ class TokenManager:
         except requests.RequestException as e:
             print(f"Token refreshed failed {e}")
             return None
+
 
 def main():
     # Get bearer token

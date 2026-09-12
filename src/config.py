@@ -2,8 +2,16 @@ from dotenv import load_dotenv
 import os
 import requests
 
+from src.auth.token_manager import TokenManager
 
-from .auth.token_manager import bearer_token
+
+token_manager = TokenManager(
+    client_id=os.getenv("CLIENT_ID"), 
+    client_secret=os.getenv("CLIENT_SECRET")
+)
+
+bearer_token = token_manager.get_token()
+
 
 load_dotenv()
 
@@ -20,3 +28,4 @@ headers: dict = {
 resp = requests.get(url=base_url, headers=headers)
 print(resp.status_code)
 print(resp.json())
+
